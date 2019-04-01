@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @basic.name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @basic.age %>
+</p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @basic.sex %>
+</p>
+
+<p>
+  <strong>Class:</strong>
+  <%= @basic.class %>
+</p>
+
+<p>
+  <strong>Race:</strong>
+  <%= @basic.race %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @basic.height %>
+</p>
+
+<%= link_to 'Edit', edit_basic_path(@basic) %> |
+<%= link_to 'Back', basics_path %>
