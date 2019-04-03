@@ -1,44 +1,44 @@
-class BasicsController < ApplicationController
+class Api::V1::BasicsController < ApplicationController
   before_action :set_basic, only: [:show, :edit, :update, :destroy]
 
   # GET /basics
-  # GET /basics.json
+
   def index
     @basics = Basic.all
+
+    render json: @basics
   end
 
   # GET /basics/1
-  # GET /basics/1.json
+
   def show
+    render json: @article
   end
 
   # GET /basics/new
-  def new
-    @basic = Basic.new
-  end
 
   # GET /basics/1/edit
+  
   def edit
   end
 
   # POST /basics
-  # POST /basics.json
+
   def create
     @basic = Basic.new(basic_params)
 
-    respond_to do |format|
-      if @basic.save
-        format.html { redirect_to @basic, notice: 'Basic was successfully created.' }
-        format.json { render :show, status: :created, location: @basic }
-      else
-        format.html { render :new }
-        format.json { render json: @basic.errors, status: :unprocessable_entity }
-      end
+    if @basic.save
+
+      render json: @basic, status: :created, location: api_v1_basic_url(@basic)
+
+    else
+
+      redner json: @basic.errors, status: :unprocessable_entity
+
     end
   end
 
   # PATCH/PUT /basics/1
-  # PATCH/PUT /basics/1.json
   def update
     respond_to do |format|
       if @basic.update(basic_params)
