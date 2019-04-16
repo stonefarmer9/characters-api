@@ -2,20 +2,20 @@ class SkillsController < ApplicationController
   before_action :set_skill, only: [:show, :edit, :update, :destroy]
 
   # GET /skills
-  # GET /skills.json
+
   def index
     @skills = Skill.all
+    render json: @skills
   end
 
   # GET /skills/1
-  # GET /skills/1.json
+
   def show
+    render json: @skill
   end
 
   # GET /skills/new
-  def new
-    @skill = Skill.new
-  end
+
 
   # GET /skills/1/edit
   def edit
