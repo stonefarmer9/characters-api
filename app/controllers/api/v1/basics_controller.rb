@@ -27,17 +27,11 @@ class Api::V1::BasicsController < ApplicationController
   # POST /basics
 
   def create
-    p 'got to create method'
     @basic = Basic.new(basic_params)
-    p '.new worked'
     if @basic.save
-      p '.save worked'
       render json: @basic, status: :created, location: api_v1_basic_url(@basic)
-
     else
-      p "GOT TO ERROR #{@basic.errors}"
       render json: @basic.errors, status: :unprocessable_entity
-
     end
   end
 
