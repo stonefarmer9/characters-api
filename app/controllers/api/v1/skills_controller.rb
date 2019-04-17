@@ -1,4 +1,7 @@
-class SkillsController < ApplicationController
+class Api::V1::SkillsController < ApplicationController
+
+  skip_before_action :verify_authenticity_token
+  
   before_action :set_skill, only: [:show, :edit, :update, :destroy]
 
   # GET /skills
@@ -26,9 +29,9 @@ class SkillsController < ApplicationController
   def create
     @skill = Skill.new(skill_params)
     if @skill.save
-      render json: @skill, statue: :created, location: api_v1_skill_url(@skill)
+      render json: @skill, status: :created, location: api_v1_skill_url(@skill)
     else
-      render json: @basic.erros, statue :unprocessable_entity
+      render json: @basic.errors, status: :unprocessable_entity
     end
   end
 
@@ -38,18 +41,14 @@ class SkillsController < ApplicationController
     if @skill.update(basic_params)
       render json: @skill
     else
-      render json: @skill.errors, statue: :unprocessable_entity
-    end 
+      render json: @skill.errors, status: :unprocessable_entity
+    end
   end
 
   # DELETE /skills/1
   # DELETE /skills/1.json
   def destroy
     @skill.destroy
-    respond_to do |format|
-      format.html { redirect_to skills_url, notice: 'Skill was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private

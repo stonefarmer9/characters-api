@@ -51,10 +51,7 @@ class Api::V1::BasicsController < ApplicationController
   # DELETE /basics/1
   # DELETE /basics/1.json
   def destroy
-    p @basic
-    p "got to destroy"
     @basic.destroy
-    p "destroy happened"
   end
 
   private
