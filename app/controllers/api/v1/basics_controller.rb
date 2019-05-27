@@ -17,13 +17,6 @@ class Api::V1::BasicsController < ApplicationController
     render json: @basic
   end
 
-  # GET /basics/new
-
-  # GET /basics/1/edit
-
-  def edit
-  end
-
   # POST /basics
 
   def create
@@ -49,7 +42,7 @@ class Api::V1::BasicsController < ApplicationController
   end
 
   # DELETE /basics/1
-  # DELETE /basics/1.json
+
   def destroy
     @basic.destroy
   end
